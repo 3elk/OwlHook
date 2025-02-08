@@ -1,5 +1,5 @@
-# HookOwl
-HookOwl is an open-sourced Python tool used for Discord Webhooks.
+# OwlHook
+OwlHook is an open-sourced Python tool used for Discord Webhooks.
 
 ===========================================
 
