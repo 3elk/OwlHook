@@ -2,7 +2,7 @@ import time
 import os
 import subprocess
 
-# Try to import the requests module, and install it if it's missing
+
 try:
     import requests
 except ModuleNotFoundError:
@@ -10,7 +10,7 @@ except ModuleNotFoundError:
     subprocess.check_call([os.sys.executable, "-m", "pip", "install", "requests"])
     import requests
 
-# Try to import the dhooks module, and install it if it's missing
+
 try:
     from dhooks import Webhook  # type: ignore
 except (ModuleNotFoundError):
@@ -19,37 +19,38 @@ except (ModuleNotFoundError):
     from dhooks import Webhook
 
 os.system('chcp 65001 >nul')
-os.system('title HookOwl - by elk')
+os.system('title {OwlHook - by elk}')
 
-# Banner and options
-choicehook = input('''                                                  
 
-                                             _____         _   _____       _ 
-                                            |  |  |___ ___| |_|     |_ _ _| |
-                                            |     | . | . | '_|  |  | | | | |
-                                            |__|__|___|___|_,_|_____|_____|_| 
-                                                         .___,   
-                                                      ___('v')___
-                                                      `"-\._./-"'
-                                                          ^ ^    
-                                                  Discord Webhook Tool 
-                                                        By: Elk
-                    
+print('''                                                  
+
+                                 
+                                           _____       _ _____         _   
+                                          |     |_ _ _| |  |  |___ ___| |_    ,___,
+                                          |  |  | | | | |     | . | . | '_|   {O,o}
+                                          |_____|_____|_|__|__|___|___|_,_|  /)___)
+                                 ----------------------------------------------"-"-----   
+                                                   Discord Webhook Tool 
+                                                         By: Elk                   
                                  ======================================================
                                  ======================================================
                 
-                                      1) - Spammer                   2) - Deleter
-                   
-    >> ''')
+                                      1) - Spammer                      2) - Deleter
+                                                        99) - Exit
 
-# Validate user input for the option
-if choicehook not in ('1', '2'):
+      
+      ''')
+os.system('echo       ╔═════HookOwl@%username%')
+print('      ║')
+choicehook = input('      ╚═════════════════════════>> ')
+
+
+if choicehook not in ('1', '2', '99'):
     print('Sorry, Not a valid option, Goodbye!')
-    os.system('timeout /t 1 /nobreak >nul')
-    input("Press Enter to exit...")
-    exit()
+    os.system('timeout /t 3 /nobreak >nul')
+    os._exit
 
-# Webhook Spammer
+
 elif choicehook == '1':
     os.system('cls; clear')
 
@@ -60,26 +61,25 @@ elif choicehook == '1':
 |_____|_|_,_|_____|  _|__,|_|_|_| 
                   |_|                       
 
-        Webhook raper1
+        Webhook Spammer
           
                                                                       
 ''')
 
     message0 = input("What do you want to spam? >> ")
     webhookurl = Webhook(input("Enter webhook >> "))
-    message = (message0 + ' - ELK WAS HERE, HOOKOWL ON TOP :3')
+    message = (message0 + ' - elk was here :3 discord.gg/diddy @here')
 
     try:
         while True:
             webhookurl.send(message)
             print("Sent message.")
-            time.sleep(1)  # Add delay to avoid flooding the server
     except KeyboardInterrupt:
-        print("\nSpamming stopped by user.")
-        input("Press Enter to exit...")
-        exit()
+        print("\nStopped spam.")
+        os.system('pause')
+        os._exit
 
-# Webhook Deleter
+
 elif choicehook == '2':
     os.system('cls; clear')
     print ('''                            
@@ -95,7 +95,7 @@ elif choicehook == '2':
 
     del_web = input("Enter the Webhook URL to delete >> ")
 
-    # Function to delete the webhook
+
     def delete(del_web):
         requests.delete(del_web)
         check = requests.get(del_web)
@@ -106,7 +106,7 @@ elif choicehook == '2':
             print("\nCould not delete the Webhook.")
             time.sleep(3.5)
 
-    # Validate if webhook is valid
+
     test = requests.get(del_web)
     if test.status_code == 404:
         print("\nInvalid webhook.")
@@ -116,3 +116,7 @@ elif choicehook == '2':
         delete(del_web)
 
 
+elif choicehook == '99':
+    print ('                                     Exiting OwlHook, Goodbye!')
+    os.system('timeout /t 001 /nobreak >nul')
+    os._exit
