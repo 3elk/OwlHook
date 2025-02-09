@@ -1,5 +1,5 @@
-# VER 1.2
-# MADE BY ELK, GIVE ALL CREDIT TO ELK
+# TOOL BY ELK
+# GIVE ALL CREDIT TO ELK
 import time
 import os
 import subprocess
@@ -26,7 +26,7 @@ except (ModuleNotFoundError):
     subprocess.check_call([os.sys.executable, "-m", "pip", "install", "dhooks"])
     from dhooks import Webhook
 
-os.system('mode 90,25')
+os.system('mode 90,27')
 os.system('title {OwlHook - by elk}')
 import colorama
 from colorama import Fore,Back,Style
@@ -36,24 +36,24 @@ colorama.init(autoreset = False)
 banner = '''                                                  
 
                                  
-                             _____       _ _____         _   
-                            |     |_ _ _| |  |  |___ ___| |_   ,___,
-                            |  |  | | | | |     | . | . | '_|  {O,o}
-                            |_____|_____|_|__|__|___|___|_,_| /)___)
-                      ------------------------------------------"-"-------  
-                                       Discord Webhook Tool 
-                                             By: Elk                   
-                     ======================================================
-                     ======================================================
-                     ╔════════════════════════════════════════════════════╗
-                     ║                                                    ║
-                     ║        1) - Spammer               2) - Deleter     ║
-                     ║                                                    ║
-                     ║                      COMING SOON                   ║
-                     ║                                                    ║
-                     ║                                                    ║
-                     ║                      99) - Exit                    ║
-                     ╚════════════════════════════════════════════════════╝ \n'''
+                         _____       _ _____         _   
+                        |     |_ _ _| |  |  |___ ___| |_   ,___,
+                        |  |  | | | | |     | . | . | '_|  {O,o}
+                        |_____|_____|_|__|__|___|___|_,_| /)___)
+                  ------------------------------------------"-"--------- 
+                                    Discord Webhook Tool 
+                                          By: Elk                   
+                  ======================================================
+                  ======================================================
+                  ╔════════════════════════════════════════════════════╗
+                  ║                                                    ║
+                  ║        1) - Spammer               2) - Deleter     ║
+                  ║                                                    ║
+                  ║                      COMING SOON                   ║
+                  ║                                                    ║
+                  ║                                                    ║
+                  ║                      99) - Exit                    ║
+                  ╚════════════════════════════════════════════════════╝ \n'''
 print(f'{Fore.LIGHTYELLOW_EX}' + banner)
 os.system('echo       ╔═════HookOwl@%username%')
 print('      ║')
