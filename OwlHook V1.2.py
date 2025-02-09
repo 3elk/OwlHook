@@ -1,7 +1,7 @@
 # TOOL BY ELK
 # GIVE ALL CREDIT TO ELK
 # VERSION 1.2
-# (PS: Go to line 82)
+# (PS: Go to line 85)
 import time
 import os
 import subprocess
