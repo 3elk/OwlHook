@@ -1,3 +1,4 @@
+# Go to line 82
 import time
 import os
 import subprocess
@@ -78,6 +79,7 @@ elif choicehook == '1':
                                                                       
 ''')
 
+    # good boy :3
     message0 = input("Spam message >> ")
     webhookurl = Webhook(input("Webhook URL >> "))
     message = (message0 + ' - elk owns you :3 @here')
