@@ -10,6 +10,12 @@ except ModuleNotFoundError:
     subprocess.check_call([os.sys.executable, "-m", "pip", "install", "requests"])
     import requests
 
+try:
+    from colorama import Fore, Back, Style
+except ModuleNotFoundError:
+    print("Colorama module not found, installing...")
+    subprocess.check_call([os.sys.executable, "-m", "pip", "install", "colorama"])
+    from colorama import Fore, Back, Style
 
 try:
     from dhooks import Webhook  # type: ignore
@@ -20,9 +26,12 @@ except (ModuleNotFoundError):
 
 os.system('chcp 65001 >nul')
 os.system('title {OwlHook - by elk}')
+import colorama
+from colorama import Fore,Back,Style
+colorama.init(autoreset = False)
 
 
-print('''                                                  
+banner = '''                                                  
 
                                  
                                            _____       _ _____         _   
@@ -34,12 +43,15 @@ print('''
                                                          By: Elk                   
                                  ======================================================
                                  ======================================================
-                
-                                      1) - Spammer                      2) - Deleter
-                                                        99) - Exit
-
+                                 ╔════════════════════════════════════════════════════╗
+                                 ║                                                    ║
+                                 ║        1) - Spammer              2) - Deleter      ║
+                                 ║                                                    ║
+                                 ║                      99) - Exit                    ║
+                                 ╚════════════════════════════════════════════════════╝
       
-      ''')
+      '''
+print(f'{Fore.LIGHTYELLOW_EX}' + banner)
 os.system('echo       ╔═════HookOwl@%username%')
 print('      ║')
 choicehook = input('      ╚═════════════════════════>> ')
@@ -66,17 +78,17 @@ elif choicehook == '1':
                                                                       
 ''')
 
-    message0 = input("What do you want to spam? >> ")
-    webhookurl = Webhook(input("Enter webhook >> "))
-    message = (message0 + ' - elk was here :3 discord.gg/diddy @here')
+    message0 = input("Spam message >> ")
+    webhookurl = Webhook(input("Webhook URL >> "))
+    message = (message0 + ' - elk owns you :3 @here')
 
     try:
         while True:
             webhookurl.send(message)
-            print("Sent message.")
+            print("Sent MSG.")
     except KeyboardInterrupt:
-        print("\nStopped spam.")
-        os.system('pause')
+        print("\nStopped spamming.")
+        os.system('pause >nul')
         os._exit
 
 
@@ -117,6 +129,6 @@ elif choicehook == '2':
 
 
 elif choicehook == '99':
-    print ('                                     Exiting OwlHook, Goodbye!')
+    print ('                                                Exiting OwlHook, Goodbye!')
     os.system('timeout /t 001 /nobreak >nul')
     os._exit
