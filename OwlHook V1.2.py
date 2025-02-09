@@ -1,7 +1,5 @@
-# TOOL BY ELK
-# GIVE ALL CREDIT TO ELK
-# VERSION 1.2
-# (PS: Go to line 85)
+# VER 1.2
+# MADE BY ELK, GIVE ALL CREDIT TO ELK
 import time
 import os
 import subprocess
@@ -28,7 +26,7 @@ except (ModuleNotFoundError):
     subprocess.check_call([os.sys.executable, "-m", "pip", "install", "dhooks"])
     from dhooks import Webhook
 
-os.system('chcp 65001 >nul')
+os.system('mode 90,25')
 os.system('title {OwlHook - by elk}')
 import colorama
 from colorama import Fore,Back,Style
@@ -38,23 +36,24 @@ colorama.init(autoreset = False)
 banner = '''                                                  
 
                                  
-                                           _____       _ _____         _   
-                                          |     |_ _ _| |  |  |___ ___| |_    ,___,
-                                          |  |  | | | | |     | . | . | '_|   {O,o}
-                                          |_____|_____|_|__|__|___|___|_,_|  /)___)
-                                 ----------------------------------------------"-"-----   
-                                                   Discord Webhook Tool 
-                                                         By: Elk                   
-                                 ======================================================
-                                 ======================================================
-                                 ╔════════════════════════════════════════════════════╗
-                                 ║                                                    ║
-                                 ║        1) - Spammer              2) - Deleter      ║
-                                 ║                                                    ║
-                                 ║                      99) - Exit                    ║
-                                 ╚════════════════════════════════════════════════════╝
-      
-      '''
+                             _____       _ _____         _   
+                            |     |_ _ _| |  |  |___ ___| |_   ,___,
+                            |  |  | | | | |     | . | . | '_|  {O,o}
+                            |_____|_____|_|__|__|___|___|_,_| /)___)
+                      ------------------------------------------"-"-------  
+                                       Discord Webhook Tool 
+                                             By: Elk                   
+                     ======================================================
+                     ======================================================
+                     ╔════════════════════════════════════════════════════╗
+                     ║                                                    ║
+                     ║        1) - Spammer               2) - Deleter     ║
+                     ║                                                    ║
+                     ║                      COMING SOON                   ║
+                     ║                                                    ║
+                     ║                                                    ║
+                     ║                      99) - Exit                    ║
+                     ╚════════════════════════════════════════════════════╝ \n'''
 print(f'{Fore.LIGHTYELLOW_EX}' + banner)
 os.system('echo       ╔═════HookOwl@%username%')
 print('      ║')
@@ -82,7 +81,6 @@ elif choicehook == '1':
                                                                       
 ''')
 
-    # good boy :3
     message0 = input("Spam message >> ")
     webhookurl = Webhook(input("Webhook URL >> "))
     message = (message0 + ' - elk owns you :3 @here')
