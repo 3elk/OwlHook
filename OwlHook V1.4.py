@@ -41,7 +41,6 @@ from colorama import Fore, Back, Style
 colorama.init(autoreset=False)
 
 # ^^ imports
-
 banner = '''                                                  
 
                                  
@@ -56,9 +55,9 @@ banner = '''
                   ======================================================
                   ╔════════════════════════════════════════════════════╗
                   ║                                                    ║
-                  ║        1) - Spammer               2) - Deleter     ║
+                  ║        1) - Spammer              3) - W.H Info     ║
                   ║                                                    ║
-                  ║                      COMING SOON                   ║
+                  ║        2) - Deleter                                ║
                   ║                                                    ║
                   ║                                                    ║
                   ║                      99) - Exit                    ║
@@ -73,11 +72,10 @@ choicehook = input('      ╚═════════════════
 
 # ^^ banner + input
 
-if choicehook not in ('1', '2', '99'):
+if choicehook not in ('1', '2', '3', '99'):
 
     print('Sorry, Not a valid option, Goodbye!')
-    time.sleep(3)
-    os._exit(0)
+    time.sleep(2)
 
 # ^^ if the input is not one of the listed options
 
@@ -114,7 +112,6 @@ elif choicehook == '1':
     except KeyboardInterrupt:
         print("\nStopped spamming.")
         input("Press Enter to continue . . .")
-        os._exit(0)
 
 # ^^ messaging the webhook using dhooks + if spamming is stopped
 
@@ -143,20 +140,51 @@ elif choicehook == '2':
         check = requests.get(del_web)
         if check.status_code == 404:
             print("\nWebhook Successfully Deleted")
-            time.sleep(3.5)
+            time.sleep(2)
+            main()
         elif check.status_code == 200:
             print("\nCould not delete the Webhook.")
-            time.sleep(3.5)
+            time.sleep(2)
 
     test = requests.get(del_web)
     if test.status_code == 404:
         print("\nInvalid webhook.")
-        time.sleep(3.5)
+        time.sleep(2)
+        main()
     elif test.status_code == 200:
         print("\nValid Hook...")
         delete(del_web)
 
 # ^^ webhook-deleters code (Checking if webhook is valid by status code + using the requests to delete the webhook)
+
+elif choicehook == '3':
+	os.system('cls' if platform.system() == 'Windows' else 'clear')
+	webhookinfo = input('''                     
+     _____ _ _   _____     ___     
+    |   __| | |_|     |___|  _|___ 
+    |   __| | '_|-   -|   |  _| . |
+    |_____|_|_,_|_____|_|_|_| |___|
+
+         Webhook Info Finder               
+
+
+
+    Webhook URL to Find Info on >> ''')
+	print('\nID >> ' + requests.get(webhookinfo).json()['id'])
+
+	print('User >> ' + requests.get(webhookinfo).json()['name'])
+
+	print('Avatar >> ' + str(requests.get(webhookinfo).json()['avatar']))
+
+	print('Channel ID >> ' + requests.get(webhookinfo).json()['channel_id'])
+
+	print('Guild ID >> ' + requests.get(webhookinfo).json()['guild_id'])
+
+	print('App ID >> ' + str(requests.get(webhookinfo).json()['application_id']))
+
+	print('Token >> ' + requests.get(webhookinfo).json()['token'])
+    
+	input('Press Enter To Continue . . .')
 
 elif choicehook == '99':
 
@@ -166,4 +194,4 @@ elif choicehook == '99':
     time.sleep(1)
     os._exit(0)
 
-# ^^ ts pmo icl 808 r u fr rn nigbart 
+# ^^ ts pmo icl 808 r u fr rn nigbart
