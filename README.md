@@ -7,9 +7,10 @@ OwlHook is an open-sourced Python tool used for Discord Webhooks.
 
 Current Ver: v1.4
 
-# 📃 Upcoming Features:
-### - Webhook PFP Changer
-### - Making it Linux compatible
+# 📃 Newest Features:
+
+### - Linux compatible!
+### - Webhook Information finder
 
 # ⚠️ Legal Notice!
 
