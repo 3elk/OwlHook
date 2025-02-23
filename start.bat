@@ -1,2 +1,2 @@
 @echo off
-python OwlHook.py
+python main.py
