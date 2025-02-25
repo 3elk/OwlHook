@@ -9,8 +9,8 @@ Current Ver: v1.5
 
 # 📃 Newest Features:
 
+### - Single messenger
 ### - Linux compatible!
-### - Webhook Information finder
 
 # ⚠️ Legal Notice!
 
