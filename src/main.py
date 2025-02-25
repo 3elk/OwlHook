@@ -13,7 +13,7 @@ def install_module(module_name):
     try:
         subprocess.check_call([os.sys.executable, "-m", "pip", "install", module_name])
     except subprocess.CalledProcessError:
-        print(f"Failed to install module {module_name}")
+        (f"Failed to install module {module_name}")
 def import_requests():
     try:
         import requests
@@ -78,9 +78,9 @@ banner = '''
                   ======================================================
                   ╔════════════════════════════════════════════════════╗
                   ║                                                    ║
-                  ║        1) - Spam                 3) - Info         ║
+                  ║        1) - Spam                 2) - Message      ║
                   ║                                                    ║
-                  ║        2) - Delete                                 ║
+                  ║        3) - Info                 4) - Delete       ║
                   ║                                                    ║
                   ║                                                    ║
                   ║                      99) - Exit                    ║
@@ -98,16 +98,49 @@ def main():
     print_banner()
     print_username()
     choicehook = input('      ╚═════════════════════════>> ')
-    if choicehook not in ('1', '2', '3', '99'):
+    if choicehook not in ('1', '2', '3', '4', '99'):
         inval()
     elif choicehook == '99':
         exiting()
     elif choicehook == '1':
         spam()
     elif choicehook == '2':
-        deleter()
+        msg()
     elif choicehook == '3':
         webhook_info()
+    elif choicehook == '4':
+        deleter()
+
+def msg():
+    clear_terminal()
+    print('''
+
+                               
+     _____ _ _   _____ _____ _____ 
+    |   __| | |_|     |   __|   __|
+    |   __| | '_| | | |__   |  |  |
+    |_____|_|_,_|_|_|_|_____|_____|
+                               
+          Webhook Messenger
+
+
+''')
+    webhook_url = input('Enter webhook URL >> ')
+    message = input('\nEnter message to send >> ')
+    payload = {
+        "content": message
+    }
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    try:
+        response = requests.post(webhook_url, data=json.dumps(payload), headers=headers)
+        response.raise_for_status()
+        print('\nMSG Sent!')
+    except requests.exceptions.RequestException as e:
+        print(f'\nMSG Failed: {e} :(')
+    time.sleep(1.5)
+    main()
 def inval():
     print('                           Sorry. Not a valid option, try again!')
     time.sleep(1)
@@ -208,3 +241,5 @@ async def async_main():
     loop = asyncio.get_running_loop()
     await loop.run_in_executor(None, start)
 asyncio.run(async_main())
+if __name__ == '__main__':
+    main()
