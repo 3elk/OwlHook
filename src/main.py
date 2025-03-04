@@ -1,3 +1,11 @@
+# THIS TOOL IS FOR EDUCATIONAL PURPOSES ONLY
+# DO NOT USE THIS TOOL FOR MALICIOUS PURPOSES
+# I AM NOT RESPONSIBLE FOR ANY DAMAGE CAUSED BY THIS TOOL
+# USE THIS TOOL AT YOUR OWN RISK
+# THIS TOOL IS MADE BY ELK
+# DISCORD: 2elk
+# GITHUB: https://github.com/3elk/OwlHook
+
 import time
 import os
 import subprocess
@@ -9,6 +17,7 @@ import random
 import string
 import json
 import asyncio
+
 def install_module(module_name):
     try:
         subprocess.check_call([os.sys.executable, "-m", "pip", "install", module_name])
@@ -56,14 +65,12 @@ def set_terminal_size_and_title():
     else:
         os.system('printf "\e[8;27;90t"')
     set_terminal_title('OwlHook - by elk')
-# ^^ title & codepage
 set_terminal_size_and_title()
 import colorama
 colorama.init(autoreset=False)
 def clear_terminal():
     os.system('cls' if platform.system() == 'Windows' else 'clear')
 clear_terminal()
-# ^^ clearing the screen
 banner = '''                                                  
 
                                  
@@ -82,6 +89,7 @@ banner = '''
                   ║                                                    ║
                   ║        3) - Info                 4) - Delete       ║
                   ║                                                    ║
+                  ║        5) - Re-Namer                               ║
                   ║                                                    ║
                   ║                      99) - Exit                    ║
                   ╚════════════════════════════════════════════════════╝ \n\n'''
@@ -98,7 +106,7 @@ def main():
     print_banner()
     print_username()
     choicehook = input('      ╚═════════════════════════>> ')
-    if choicehook not in ('1', '2', '3', '4', '99'):
+    if choicehook not in ('1', '2', '3', '4', '5', '99'):
         inval()
     elif choicehook == '99':
         exiting()
@@ -110,12 +118,44 @@ def main():
         webhook_info()
     elif choicehook == '4':
         deleter()
+    elif choicehook == '5':
+        name_changer()
 
+def name_changer():
+    clear_terminal()
+    print('''                   
+     _____ _ _   _____               
+    |   __| | |_|   | |___ _____ ___ 
+    |   __| | '_| | | | .'|     | -_|
+    |_____|_|_,_|_|___|__,|_|_|_|___|
+                                     
+          Webhook Name Changer
+
+
+''')
+    webhook_url = input("   Webhook URL >> ")
+    name = input("  Name >> ")
+
+    payload = {
+        "name": name
+    }
+    headers = {
+        'Content-Type': 'application/json'
+    }
+
+    try:
+        response = requests.patch(webhook_url, data=json.dumps(payload), headers=headers)
+        response.raise_for_status()
+        print("Webhook name updated successfully!")
+        time.sleep(2)
+        main()
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to update webhook name: {e}")
+        time.sleep(2)
+        main()
 def msg():
     clear_terminal()
-    print('''
-
-                               
+    print('''                     
      _____ _ _   _____ _____ _____ 
     |   __| | |_|     |   __|   __|
     |   __| | '_| | | |__   |  |  |
@@ -125,8 +165,8 @@ def msg():
 
 
 ''')
-    webhook_url = input('Enter webhook URL >> ')
-    message = input('\nEnter message to send >> ')
+    webhook_url = input('   Enter webhook URL >> ')
+    message = input('\n   Enter message to send >> ')
     payload = {
         "content": message
     }
@@ -241,5 +281,7 @@ async def async_main():
     loop = asyncio.get_running_loop()
     await loop.run_in_executor(None, start)
 asyncio.run(async_main())
+
+
 if __name__ == '__main__':
     main()
