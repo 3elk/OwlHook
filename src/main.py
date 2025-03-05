@@ -7,7 +7,7 @@
 # GITHUB: https://github.com/3elk/OwlHook
 
 import time
-import os
+import os   
 import subprocess
 import platform
 import itertools
@@ -53,7 +53,6 @@ def import_dhooks():
         from dhooks import Webhook
         return Webhook
 Webhook = import_dhooks()
-# ^^ modules
 def set_terminal_title(title):
     if platform.system() == "Windows":
         os.system(f'title {title}')
@@ -89,7 +88,7 @@ banner = '''
                   ║                                                    ║
                   ║        3) - Info                 4) - Delete       ║
                   ║                                                    ║
-                  ║        5) - Re-Namer                               ║
+                  ║        5) - Re-Namer             6) - Status       ║
                   ║                                                    ║
                   ║                      99) - Exit                    ║
                   ╚════════════════════════════════════════════════════╝ \n\n'''
@@ -106,7 +105,7 @@ def main():
     print_banner()
     print_username()
     choicehook = input('      ╚═════════════════════════>> ')
-    if choicehook not in ('1', '2', '3', '4', '5', '99'):
+    if choicehook not in ('1', '2', '3', '4', '5', '6', '7', '99'):
         inval()
     elif choicehook == '99':
         exiting()
@@ -120,7 +119,34 @@ def main():
         deleter()
     elif choicehook == '5':
         name_changer()
+    elif choicehook == '6':
+        check_webhook_url()
+def check_webhook_url():
+    clear_terminal()
+    print('''                         
+ _____ _ _   _____ _       _           
+|   __| | |_|   __| |_ ___| |_ _ _ ___ 
+|   __| | '_|__   |  _| .'|  _| | |_ -|
+|_____|_|_,_|_____|_| |__,|_| |___|___|
+                                       
+         Webhook Status Checker
 
+
+''')
+    webhook_url_check = input('   Enter the Webhook URL to check the status >> ')
+    response = requests.get(webhook_url_check)
+    if response.status_code == 404:
+        print("Webhook is invalid or deleted :(")
+        time.sleep(2)
+        main()
+    elif response.status_code == 200:
+        print("Valid webhook!")
+        time.sleep(2)
+        main()
+    else:
+        print("Error: " + status_code)
+        time.sleep(2)
+        main()
 def name_changer():
     clear_terminal()
     print('''                   
@@ -281,7 +307,6 @@ async def async_main():
     loop = asyncio.get_running_loop()
     await loop.run_in_executor(None, start)
 asyncio.run(async_main())
-
 
 if __name__ == '__main__':
     main()
