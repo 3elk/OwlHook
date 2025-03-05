@@ -9,7 +9,7 @@ Current Ver: v1.8
 
 # 📃 Newest Features:
 
-### - Webhook Renamer.
+### - Webhook Status Checker
 ### - Linux compatible!
 
 # ⚠️ Legal Notice!
