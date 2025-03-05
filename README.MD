@@ -1,7 +1,7 @@
 # 🦉 OwlHook
 OwlHook is an open-sourced Python tool used for Discord Webhooks.
 
-![Image Alt](https://github.com/3elk/OwlHook/blob/6f853415e19ca8a4c1d432e9d1eed4d22388f991/Screenshot%202025-03-03%20222225.png)
+![Image Alt](https://github.com/3elk/OwlHook/blob/5e62890d70916f518480f5fb796d289af1143be1/Screenshot%202025-03-04%20195602.png)
 
 ===========================================
 
